@@ -1,0 +1,54 @@
+const auth_link ="https://www.strava.com/oauth/token"
+
+function getActivities(res){
+    const activities_link =`https://www.strava.com/api/v3/athlete/activities?access_token=${res.access_token}`
+    fetch(activities_link)
+        .then((res) => console.log(res.json()))
+
+    // Replace 'YOUR_ACCESS_TOKEN' with your actual access token obtained from Strava
+    const accessToken = res.accessToken;
+
+    // Fetch activities from Strava API
+    fetch('https://www.strava.com/api/v3/athlete/activities', {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+
+    .then(response => response.json())
+    .then(data => {
+        const activitiesDiv = document.getElementById('activities');
+
+        // Loop through activities and display relevant data
+        data.forEach(activity => {
+            const activityElement = document.createElement('div');
+            activityElement.innerHTML = `
+                <h3>${activity.type}</h3>
+                <p>Name: ${activity.name}</p>
+                <p>Distance: ${activity.distance} meters</p>
+            `;
+            activitiesDiv.appendChild(activityElement);
+        });
+    })
+    .catch(error => console.error(error));
+
+}
+
+function reAuthorize(){
+    fetch(auth_link,{
+        method: 'post',
+        headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+        },
+
+        body: JSON.stringify({
+            client_id: '108770',
+            client_secret: 'b3d2872bc80d42f41e2094a3ad1bd56cd5f4d959',
+            refresh_token: '1d01b612ee58920541259c0f0f28d968a0c5bcde',
+            grant_type: 'refresh_token'
+        })
+    }).then(res => res.json())
+        .then(res => getActivities(res))
+
+}

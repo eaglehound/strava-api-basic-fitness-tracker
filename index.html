@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <title>Strava Activities</title>
+</head>
+<body>
+    <div class="card">
+        <h1 class="Greetings">Hi HOUND</h1>
+        <div id="message" class="message"></div>
+        <div id="activities" class="activity-cards"></div>
+        <button onclick="reAuthorize()">Show Activities</button>
+        <div id="message2" class="message2"></div>
+    </div>
+
+    <!-- including Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
