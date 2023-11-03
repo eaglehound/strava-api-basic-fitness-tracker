@@ -1,0 +1,43 @@
+1) Get authorization code from authorization page. This is a one time, manual step. Paste the below code in a browser, hit enter then grab the "code" part from the resulting url.
+
+https://www.strava.com/oauth/authorize?client_id='....'&redirect_uri=http://localhost&response_type=code&scope=activity:read_all
+
+==> in above url place your client_id obtained from Strava Account within '....', also remove ''
+    for example:  Let's say your client is : 12345
+    url : https://www.strava.com/oauth/authorize?client_id=12345&redirect_uri=http://localhost&response_type=code&scope=activity:read_all
+
+
+
+
+2) Exchange authorization code for access token & refresh token
+
+https://www.strava.com/oauth/token?client_id='....'&client_secret='.........'&code=af6c32eb417d24591d25771bedc5732e067d8305&grant_type=authorization_code
+
+==> in above url place your client_id & client_secret obtained from Strava Account within '....', also remove '' afterwards
+    for example:  Let's say your client is : 12345
+                                 client_secret is : abcde123efg45hijkl789mnopqrstuv11wx04yz2000
+    url : https://www.strava.com/oauth/token?client_id=12345&client_secret=abcde123efg45hijkl789mnopqrstuv11wx04yz2000&code=af6c32eb417d24591d25771bedc5732e067d8305&grant_type=authorization_code
+
+
+
+
+3) View your activities using the access token just received
+
+https://www.strava.com/api/v3/athlete/activities?access_token='.....'
+
+==> in above url place your client_id obtained from Strava Account within '....', also remove '' afterwards
+    for example:  Let's say your access_token : avns11hifi09wispot04duck09jml2000af
+    url : https://www.strava.com/api/v3/athlete/activities?access_token=avns11hifi09wispot04duck09jml2000af
+
+
+
+
+4) Use refresh token to get new access tokens
+ 
+https://www.strava.com/oauth/token?client_id='....'&client_secret='.....'&refresh_token='.......'&grant_type=refresh_token
+
+==> in above url place your client_id, client_secret, refresh_token obtained from Strava '....', also remove '' afterwards
+    for example:  Let's say your client is : 12345
+                                 client_secret is : abcde123efg45hijkl789mnopqrstuv11wx04yz2000
+                                 refresh_token : xxyy1234qwertybut62t61bbcasdb
+    url : https://www.strava.com/oauth/token?client_id=12345&client_secret=abcde123efg45hijkl789mnopqrstuv11wx04yz2000&refresh_token=xxyy1234qwertybut62t61bbcasdb&grant_type=refresh_token
