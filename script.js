@@ -104,9 +104,12 @@ function reAuthorize() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            client_id: '108770',
-            client_secret: 'b3d2872bc80d42f41e2094a3ad1bd56cd5f4d959',
-            refresh_token: '1d01b612ee58920541259c0f0f28d968a0c5bcde',
+            // Place your actual client_id within '...' obtained from Strava
+            client_id: '...',
+            // Place your actual client_secret within '...' obtained from Strava
+            client_secret: '...',
+            // Place your actual refresh_token within '...' obtained from Strava
+            refresh_token: '...',
             grant_type: 'refresh_token'
         })
     })
